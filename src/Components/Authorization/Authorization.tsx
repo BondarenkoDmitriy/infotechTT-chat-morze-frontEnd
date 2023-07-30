@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { UserRole } from '../../type/roles';
 import './authorization.scss';
 import { authorizeSocket } from '../../utils/socketSetup';
+import { Button } from '../../Controls/Button/Button';
 
 interface Porps {
   onLogin: (username: string, role: UserRole) => void;
@@ -38,13 +39,12 @@ export const Authorization: React.FC<Porps> = ({ onLogin }) => {
         <option value={UserRole.Admin}>Admin</option>
         <option value={UserRole.Newby}>Newby</option>
       </select>
-      <button
-        type="submit"
+      <Button
         onClick={handleLogin}
-        className="authorization__field"
+        classes="authorization__field"
       >
         Login
-      </button>
+      </Button>
     </div>
   );
 };
