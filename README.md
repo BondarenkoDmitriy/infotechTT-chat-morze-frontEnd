@@ -16,7 +16,7 @@
 
 1. Клонуйте репозиторій проекту на свій комп’ютер.
     <br>
-    git clone https://github.com/BondarenkoDmitriy/infotechTT-chat-morze.git
+    git clone https://github.com/BondarenkoDmitriy/infotechTT-chat-morze-frontEnd.git
 
 3. Відкрийте термінал або командний рядок і перейдіть до папки проекту.
     <br>
