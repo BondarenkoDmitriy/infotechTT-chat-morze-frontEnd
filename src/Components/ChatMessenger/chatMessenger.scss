@@ -10,36 +10,6 @@
     padding: 10px;
     max-height: 300px;
     overflow-y: scroll;
-
-    &__message {
-      padding: 5px;
-      border-radius: 5px;
-      margin-bottom: 10px;
-      max-width: 70%;
-
-      &__sender {
-        background-color: #dff0d8;
-        align-self: flex-end;
-        margin-left: 30%;
-      }
-
-      &__receiver{
-        background-color: #f5f5f5;
-        align-self: flex-start;
-        margin-right: 30%;
-      }
-
-      &__newby {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        &--img {
-          width: 24px;
-          margin-right: 8px;
-        }
-      }
-    }
   }
 
   &__footer {
@@ -74,10 +44,4 @@
       }
     }
   }
-}
-
-.chat__body__message__eye-icon {
-  cursor: pointer;
-  margin-right: 10px;
-  color: #007bff;
 }
