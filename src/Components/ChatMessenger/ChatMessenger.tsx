@@ -12,6 +12,7 @@ import { IMessage } from '../../type/message';
 import { generateUniqueId } from '../../utils/generateUniqueId';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
+import { Message } from '../Message/Message';
 
 const socket = io('http://localhost:5000');
 
@@ -67,10 +68,6 @@ export const ChatMessenger: React.FC<Props> = ({ username, role }) => {
     setMessageInput('');
   };
 
-  const handleDecoderMessage = (message: IMessage) => {
-    socket.emit('decoderMorseMessage', {from: username, text: message.text, messageId: message.id})
-  };
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
     let hasError = false;
@@ -95,27 +92,9 @@ export const ChatMessenger: React.FC<Props> = ({ username, role }) => {
       <div className="chat__container">
         <div className="chat__body" id="message-container">
           {messages.map((message) => (
-            <div
-              key={message.from}
-              className={classNames('chat__body__message', {
-                chat__body__message__sender: message.from === username,
-                chat__body__message__receiver: message.from !== username,
-                'chat__body__message__newby': role === 'newby',
-              })}
-            >
-              {message.from}
-              :
-              <br />
-              {' '}
-              {message.text}
-              {role === 'newby' && <span className="chat__body__message__eye-icon">
-                <FontAwesomeIcon
-                  icon={faEye}
-                  title="Показать текст"
-                  onClick={(e) => {handleDecoderMessage(message)}}
-                  />
-              </span>}
-            </div>
+            <React.Fragment key={message.from}>
+              <Message message={message} role={role} username={username} />
+            </React.Fragment>
           ))}
         </div>
         <div className="chat__footer">
