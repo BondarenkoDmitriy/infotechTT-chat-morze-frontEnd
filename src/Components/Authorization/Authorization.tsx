@@ -4,6 +4,7 @@ import { UserRole } from '../../type/roles';
 import './authorization.scss';
 import { authorizeSocket } from '../../utils/socketSetup';
 import { Button } from '../../Controls/Button/Button';
+import { Input } from '../../Controls/Input/Input';
 
 interface Porps {
   onLogin: (username: string, role: UserRole) => void;
@@ -22,13 +23,11 @@ export const Authorization: React.FC<Porps> = ({ onLogin }) => {
 
   return (
     <div className="authorization">
-      <input
-        type="text"
+      <Input
         placeholder="Your Name"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
-        className="authorization__field authorization__field__name"
-        required
+        classes="authorization__field authorization__field__name"
       />
       <select
         value={role}
