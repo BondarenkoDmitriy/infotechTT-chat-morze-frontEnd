@@ -13,6 +13,7 @@ import { generateUniqueId } from '../../utils/generateUniqueId';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { Message } from '../Message/Message';
+import { Button } from '../../Controls/Button/Button';
 
 const socket = io('http://localhost:5000');
 
@@ -115,13 +116,12 @@ export const ChatMessenger: React.FC<Props> = ({ username, role }) => {
             className={classNames('chat__footer__field', { 'chat__footer__field--error': error })}
           />
           {error && <div className="error-message">{error}</div>}
-          <button
-            type="button"
+          <Button
             onClick={handleSendMessage}
-            className="chat__footer__field chat__footer__field--button"
+            classes="chat__footer__field chat__footer__field--button"
           >
             Send
-          </button>
+          </Button>
         </div>
       </div>
     </div>
