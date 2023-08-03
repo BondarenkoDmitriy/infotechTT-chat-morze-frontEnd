@@ -7,6 +7,9 @@
   }
 
   &__body {
+    display: flex;
+    flex-direction: column;
+    
     padding: 10px;
     max-height: 300px;
     overflow: auto;

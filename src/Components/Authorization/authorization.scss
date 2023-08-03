@@ -31,8 +31,21 @@
       border-color: #000;
     }
 
-    &__name {
+    &__input {
       padding-left: 10px;
+    }
+
+    &__password {
+      display: flex;
+      position: relative;
+
+      &-icon {
+        position: absolute;
+        top: 50%;
+        right: 8px;
+        transform: translateY(-50%);
+        cursor: pointer;
+      }
     }
 
     &--error {
