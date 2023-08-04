@@ -35,9 +35,6 @@ export const Message: React.FC<Props> = ({
   };
 
   const handleDecoderMessageUseKey = (inputMessage: IMessage) => {
-    // eslint-disable-next-line no-console
-    console.log('--------------------');
-
     if (showPasswordInput) {
       if (inputPassword === password) {
         decryptSingleMessage(inputMessage);

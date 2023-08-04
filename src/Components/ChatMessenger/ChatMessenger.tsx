@@ -1,5 +1,4 @@
 /* eslint-disable object-shorthand */
-/* eslint-disable no-console */
 
 import React, { useState, useEffect } from 'react';
 import './chatMessenger.scss';
@@ -25,12 +24,8 @@ interface Props {
 export const ChatMessenger: React.FC<Props> = ({ username, role, password }) => {
   const [messages, setMessages] = useState<IMessage[]>([]);
 
-  console.log(password);
-
   useEffect(() => {
     onChatMessage((message) => {
-      console.log('New chat message received:', message);
-
       setMessages((prevMessages) => [
         ...prevMessages,
         {
@@ -43,7 +38,6 @@ export const ChatMessenger: React.FC<Props> = ({ username, role, password }) => 
     });
 
     onPrivateMessage((data) => {
-      console.log('New private message received:', data);
       setMessages((prevPrivateMessages) => [
         ...prevPrivateMessages,
         {
@@ -56,8 +50,6 @@ export const ChatMessenger: React.FC<Props> = ({ username, role, password }) => 
     });
 
     onUpdateMessage((data) => {
-      console.log('onUpdateMessage', data);
-
       setMessages((prevMessages) => prevMessages.map((message) => (
         message.id === data.messageId ? {
           ...message,
@@ -67,7 +59,6 @@ export const ChatMessenger: React.FC<Props> = ({ username, role, password }) => 
     });
 
     onDisconnect(() => {
-      console.log('Disconnected from server', socket.id);
     });
 
     return () => {
@@ -76,11 +67,6 @@ export const ChatMessenger: React.FC<Props> = ({ username, role, password }) => 
   }, []);
 
   const decryptSingleMessage = (data: IMessage) => {
-    console.log(data, '--------------------');
-    const text = decryptMessage(data.text, password);
-
-    console.log(text);
-
     setMessages((prevMessages) => prevMessages.map((message) => (
       message.id === data.id ? {
         ...message,
