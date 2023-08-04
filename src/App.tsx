@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ChatMessenger } from './Components/ChatMessenger/ChatMessenger';
 import { Authorization } from './Components/Authorization/Authorization';
 import { UserRole } from './type/roles';
+import { AdminPanel } from './Components/AdminPanel/AdminPanel';
 
 export const App: React.FC = () => {
   const [username, setUsername] = useState('');
@@ -19,7 +20,11 @@ export const App: React.FC = () => {
   return (
     <div>
       {isAuth && role ? (
-        <ChatMessenger username={username} role={role} password={password} />
+        <>
+          {role === UserRole.Admin
+            ? <AdminPanel />
+            : <ChatMessenger username={username} role={role} password={password} />}
+        </>
       ) : (
         <Authorization onLogin={handleLogin} />
       )}
